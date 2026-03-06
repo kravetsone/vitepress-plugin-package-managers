@@ -11,6 +11,9 @@
   "files": [
     "src"
   ],
+  "scripts": {
+    "test": "bun test"
+  },
   "peerDependencies": {
     "vitepress": ">=1.0.0",
     "vue": ">=3.3.0"
@@ -29,7 +32,8 @@
     "npm",
     "yarn",
     "pnpm",
-    "bun"
+    "bun",
+    "deno"
   ],
   "repository": {
     "type": "git",
