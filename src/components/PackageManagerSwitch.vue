@@ -4,7 +4,9 @@ import {
   defaultPkgManagers,
   type PackageManager,
 } from "../commands.ts";
-import { icons } from "../icons.ts";
+import { useIcons } from "../useIcons.ts";
+
+const getIcon = useIcons();
 
 const STORAGE_KEY = "vitepress-pkg-manager";
 const SYNC_EVENT = "vitepress-pkg-manager-sync";
@@ -65,7 +67,7 @@ onUnmounted(() => {
 <template>
   <div class="vp-pm-switch" :class="{ open }">
     <button class="vp-pm-switch-btn" @click="open = !open" :aria-expanded="open">
-      <span v-if="icons[active]" class="vp-pm-icon" v-html="icons[active]"></span>
+      <span v-if="getIcon(active)" class="vp-pm-icon" v-html="getIcon(active)"></span>
       {{ active }}
       <svg class="vp-pm-chevron" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -80,7 +82,7 @@ onUnmounted(() => {
         :class="{ active: active === pm }"
         @click="select(pm)"
       >
-        <span v-if="icons[pm]" class="vp-pm-icon" v-html="icons[pm]"></span>
+        <span v-if="getIcon(pm)" class="vp-pm-icon" v-html="getIcon(pm)"></span>
         {{ pm }}
       </button>
     </div>

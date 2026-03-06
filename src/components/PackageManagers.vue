@@ -7,7 +7,9 @@ import {
   type CommandType,
   type CommandOptions,
 } from "../commands.ts";
-import { icons } from "../icons.ts";
+import { useIcons } from "../useIcons.ts";
+
+const getIcon = useIcons();
 
 const STORAGE_KEY = "vitepress-pkg-manager";
 const SYNC_EVENT = "vitepress-pkg-manager-sync";
@@ -121,7 +123,7 @@ async function copyCommand() {
         :aria-selected="active === pm"
         @click="select(pm)"
       >
-        <span v-if="icons[pm]" class="vp-pm-icon" v-html="icons[pm]"></span>
+        <span v-if="getIcon(pm)" class="vp-pm-icon" v-html="getIcon(pm)"></span>
         {{ pm }}
       </button>
     </div>

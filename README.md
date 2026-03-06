@@ -151,6 +151,20 @@ All components share state through three mechanisms:
 
 Default: `["npm", "yarn", "pnpm", "bun"]`
 
+## Custom icons
+
+Every package manager has a built-in icon (Simple Icons + official Bun logo). You can override or disable them globally:
+
+```ts
+enhanceAppWithPackageManagers(app, {
+  icons: {
+    bun: '<svg>...</svg>',  // custom SVG
+    npm: false,              // hide icon
+    // others keep their defaults
+  }
+})
+```
+
 ## Configuring defaults
 
 Pass options to the markdown plugin to change the default set of package managers:
