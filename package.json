@@ -1,18 +1,24 @@
 {
   "name": "vitepress-plugin-package-managers",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Display package manager commands with synced, persistent tabs for VitePress",
   "license": "MIT",
   "type": "module",
   "exports": {
-    ".": "./src/index.ts",
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./src/index.ts"
+    },
     "./client": "./src/client.ts",
     "./icons": "./src/icons.ts"
   },
   "files": [
-    "src"
+    "src",
+    "dist"
   ],
   "scripts": {
+    "build": "bun build src/index.ts --outdir dist --target node --format esm --external markdown-it",
+    "prepublishOnly": "bun run build",
     "test": "bun test"
   },
   "peerDependencies": {

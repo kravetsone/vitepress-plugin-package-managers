@@ -10,7 +10,7 @@ bun test          # Run unit tests
 
 ## Architecture
 
-- **No build step** — ships TypeScript + Vue source; VitePress/Vite processes them.
+- **Minimal build step** — `bun run build` compiles the server-side entry (`dist/index.js`) for Node.js compatibility. Client/icons exports ship as TypeScript + Vue source; VitePress/Vite processes them.
 - `src/commands.ts` — pure functions for generating commands per package manager.
 - `src/markdown.ts` — markdown-it plugin (`:::pm-add` syntax). Transforms source before markdown-it parsing.
 - `src/client.ts` — Vue component registration, `provide/inject` config with `pmConfigKey`.
