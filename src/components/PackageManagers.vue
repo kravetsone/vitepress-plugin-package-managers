@@ -7,6 +7,7 @@ import {
   type CommandType,
   type CommandOptions,
 } from "../commands.ts";
+import { icons } from "../icons.ts";
 
 const STORAGE_KEY = "vitepress-pkg-manager";
 const SYNC_EVENT = "vitepress-pkg-manager-sync";
@@ -120,6 +121,7 @@ async function copyCommand() {
         :aria-selected="active === pm"
         @click="select(pm)"
       >
+        <span v-if="icons[pm]" class="vp-pm-icon" v-html="icons[pm]"></span>
         {{ pm }}
       </button>
     </div>
@@ -144,7 +146,9 @@ async function copyCommand() {
 
 .vp-pm .vp-pm-tab {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   border: none;
   border-bottom: 1px solid transparent;
   padding: 0 12px;
@@ -181,5 +185,17 @@ async function copyCommand() {
 
 .vp-pm .vp-pm-tab.active::after {
   background-color: var(--vp-code-tab-active-bar-color);
+}
+
+.vp-pm-icon {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.vp-pm-icon svg {
+  width: 100%;
+  height: 100%;
 }
 </style>

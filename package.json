@@ -1,6 +1,6 @@
 {
   "name": "vitepress-plugin-package-managers",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Display package manager commands with synced, persistent tabs for VitePress",
   "license": "MIT",
   "type": "module",
