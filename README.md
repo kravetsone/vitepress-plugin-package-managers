@@ -41,6 +41,17 @@ export default {
 };
 ```
 
+#### With icons
+
+Icons are opt-in for tree-shaking. Import the preset and pass it:
+
+```ts
+import { enhanceAppWithPackageManagers } from "vitepress-plugin-package-managers/client";
+import { icons } from "vitepress-plugin-package-managers/icons";
+
+enhanceAppWithPackageManagers(app, { icons });
+```
+
 ## Usage
 
 ### Markdown syntax
@@ -151,18 +162,34 @@ All components share state through three mechanisms:
 
 Default: `["npm", "yarn", "pnpm", "bun"]`
 
-## Custom icons
+## Icons
 
-Every package manager has a built-in icon (Simple Icons + official Bun logo). You can override or disable them globally:
+Icons are **not bundled by default** — you opt in for tree-shaking.
 
 ```ts
+// Use all built-in icons (npm, yarn, pnpm, bun, deno)
+import { icons } from "vitepress-plugin-package-managers/icons";
+enhanceAppWithPackageManagers(app, { icons });
+```
+
+Cherry-pick only what you need:
+
+```ts
+import { npm, bun } from "vitepress-plugin-package-managers/icons";
+enhanceAppWithPackageManagers(app, { icons: { npm, bun } });
+```
+
+Use your own SVG or disable an icon:
+
+```ts
+import { icons } from "vitepress-plugin-package-managers/icons";
 enhanceAppWithPackageManagers(app, {
   icons: {
+    ...icons,
     bun: '<svg>...</svg>',  // custom SVG
     npm: false,              // hide icon
-    // others keep their defaults
   }
-})
+});
 ```
 
 ## Configuring defaults

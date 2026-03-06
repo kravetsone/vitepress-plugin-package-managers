@@ -25,6 +25,7 @@ bun test          # Run unit tests
 |------|-------|
 | `vitepress-plugin-package-managers` | Server: `packageManagersMarkdownPlugin` for `config.mts` |
 | `vitepress-plugin-package-managers/client` | Client: `enhanceAppWithPackageManagers`, `PackageManagers`, `PackageManagerSwitch`, `pmConfigKey`, `IconOverrides` |
+| `vitepress-plugin-package-managers/icons` | Opt-in icons: `icons` (all), or named `npm`, `yarn`, `pnpm`, `bun`, `deno` |
 
 ## Persistence
 
@@ -35,12 +36,10 @@ All components share state via:
 
 ## Icons
 
-Default icons from Simple Icons (npm, yarn, pnpm, deno) and official Bun logo. Customizable via `enhanceAppWithPackageManagers(app, { icons: { ... } })`:
-- `string` — custom SVG markup
-- `false` — hide icon for that manager
-- omitted — use default
-
-Icons are resolved via `useIcons()` composable which reads from Vue `inject`.
+Icons are **opt-in** — not bundled by default for tree-shaking. User imports from `vitepress-plugin-package-managers/icons`.
+- `src/icons.ts` — named exports (`npm`, `yarn`, `pnpm`, `bun`, `deno`) + convenience `icons` object.
+- `src/useIcons.ts` — composable that reads icons from Vue `inject(pmConfigKey)`.
+- Icons value: `string` (SVG markup), `false` (hide), or `undefined` (no icon).
 
 ## Supported Package Managers
 
