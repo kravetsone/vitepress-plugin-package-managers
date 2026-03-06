@@ -1,0 +1,38 @@
+{
+  "name": "vitepress-plugin-package-managers",
+  "version": "0.1.0",
+  "description": "Display package manager commands with synced, persistent tabs for VitePress",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./client": "./src/client.ts"
+  },
+  "files": [
+    "src"
+  ],
+  "peerDependencies": {
+    "vitepress": ">=1.0.0",
+    "vue": ">=3.3.0"
+  },
+  "devDependencies": {
+    "@types/markdown-it": "^14.1.2",
+    "markdown-it": "^14.1.0",
+    "typescript": "^5.7.0",
+    "vitepress": "^1.6.0",
+    "vue": "^3.5.0"
+  },
+  "keywords": [
+    "vitepress",
+    "vitepress-plugin",
+    "package-manager",
+    "npm",
+    "yarn",
+    "pnpm",
+    "bun"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kravetsone/vitepress-plugin-package-managers"
+  }
+}
